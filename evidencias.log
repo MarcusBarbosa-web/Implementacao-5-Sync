@@ -1,0 +1,140 @@
+Script started on 2026-10-30 16:46:52-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="148" LINES="35"]
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ date
+[?2004lFri Oct 30 16:46:56 -03 2026
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ whoami
+[?2004lmarcus
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ pwd
+[?2004l/home/marcus/Implementacao-5-Sync
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_wait_for_car[m[K’:
+[01m[Ksync_car.c:21:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kpthread_mutex_wait[m[K’; did you mean ‘[01m[Kpthread_mutex_init[m[K’? [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   21 |         [01;35m[Kpthread_mutex_wait[m[K(&station->passageiros, &station->mutex);
+      |         [01;35m[K^~~~~~~~~~~~~~~~~~[m[K
+      |         [32m[Kpthread_mutex_init[m[K
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_on_board[m[K’:
+[01m[Ksync_car.c:36:5:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kpthread_cond_wait[m[K’
+   36 |     [01;31m[Kpthread_cond_wait[m[K(&station->vagao);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:3[m[K:
+[01m[K/usr/include/pthread.h:1133:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1133 | extern int [01;36m[Kpthread_cond_wait[m[K (pthread_cond_t *__restrict __cond,
+      |            [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[Ksync_car.c:[m[K At top level:
+[01m[Ksync_car.c:41:6:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kstation_load_car[m[K’; have ‘[01m[Kvoid(struct station *)[m[K’
+   41 | void [01;31m[Kstation_load_car[m[K(struct station *station){
+      |      [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:4[m[K:
+[01m[Ksync_car.h:18:6:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kstation_load_car[m[K’ with type ‘[01m[Kvoid(struct station *, int)[m[K’
+   18 | void [01;36m[Kstation_load_car[m[K(struct station *station, int count);
+      |      [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_load_car[m[K’:
+[01m[Ksync_car.c:44:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount[m[K’ undeclared (first use in this function)
+   44 |     station->livres = [01;31m[Kcount[m[K;
+      |                       [01;31m[K^~~~~[m[K
+[01m[Ksync_car.c:44:23:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+[01m[Ksync_car.c:52:21:[m[K [01;35m[Kwarning: [m[Kstatement with no effect [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value-Wunused-value]8;;[m[K]
+   52 |     [01;35m[Kstation->livres == 0[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~^~~~[m[K
+make: *** [Makefile:7: sync_car] Error 1
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_on_board[m[K’:
+[01m[Ksync_car.c:36:5:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kpthread_cond_wait[m[K’
+   36 |     [01;31m[Kpthread_cond_wait[m[K(&station->vagao);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:3[m[K:
+[01m[K/usr/include/pthread.h:1133:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1133 | extern int [01;36m[Kpthread_cond_wait[m[K (pthread_cond_t *__restrict __cond,
+      |            [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[Ksync_car.c:[m[K At top level:
+[01m[Ksync_car.c:41:6:[m[K [01;31m[Kerror: [m[Kconflicting types for ‘[01m[Kstation_load_car[m[K’; have ‘[01m[Kvoid(struct station *)[m[K’
+   41 | void [01;31m[Kstation_load_car[m[K(struct station *station){
+      |      [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:4[m[K:
+[01m[Ksync_car.h:18:6:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kstation_load_car[m[K’ with type ‘[01m[Kvoid(struct station *, int)[m[K’
+   18 | void [01;36m[Kstation_load_car[m[K(struct station *station, int count);
+      |      [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_load_car[m[K’:
+[01m[Ksync_car.c:44:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount[m[K’ undeclared (first use in this function)
+   44 |     station->livres = [01;31m[Kcount[m[K;
+      |                       [01;31m[K^~~~~[m[K
+[01m[Ksync_car.c:44:23:[m[K [01;36m[Knote: [m[Keach undeclared identifier is reported only once for each function it appears in
+make: *** [Makefile:7: sync_car] Error 1
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_on_board[m[K’:
+[01m[Ksync_car.c:36:5:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kpthread_cond_wait[m[K’
+   36 |     [01;31m[Kpthread_cond_wait[m[K(&station->vagao);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:3[m[K:
+[01m[K/usr/include/pthread.h:1133:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1133 | extern int [01;36m[Kpthread_cond_wait[m[K (pthread_cond_t *__restrict __cond,
+      |            [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+make: *** [Makefile:7: sync_car] Error 1
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make text[K[Kst[K[K[K[K[K[K[K[K[Kmake
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_on_board[m[K’:
+[01m[Ksync_car.c:36:5:[m[K [01;31m[Kerror: [m[Ktoo few arguments to function ‘[01m[Kpthread_cond_wait[m[K’
+   36 |     [01;31m[Kpthread_cond_wait[m[K(&station->vagao);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[Ksync_car.c:3[m[K:
+[01m[K/usr/include/pthread.h:1133:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1133 | extern int [01;36m[Kpthread_cond_wait[m[K (pthread_cond_t *__restrict __cond,
+      |            [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[Ksync_car.c:[m[K In function ‘[01m[Kstation_load_car[m[K’:
+[01m[Ksync_car.c:49:9:[m[K [01;31m[Kerror: [m[Ktoo many arguments to function ‘[01m[Kpthread_cond_signal[m[K’
+   49 |         [01;31m[Kpthread_cond_signal[m[K(&station->vagao, &station->mutex);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/usr/include/pthread.h:1121:12:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1121 | extern int [01;36m[Kpthread_cond_signal[m[K (pthread_cond_t *__cond)
+      |            [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+make: *** [Makefile:7: sync_car] Error 1
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make text[K[Kst
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+./sync_car
+car entering station with 10 free seats
+car departed station with 10 new passenger(s) (expected 10)
+car entering station with 34 free seats
+car departed station with 34 new passenger(s) (expected 34)
+car entering station with 27 free seats
+car departed station with 27 new passenger(s) (expected 27)
+car entering station with 31 free seats
+car departed station with 29 new passenger(s) (expected 29)
+Looks good!
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ exit
+[?2004lexit
+
+Script done on 2026-10-30 16:53:31-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-10-30 16:54:03-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="148" LINES="35"]
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ [7mmake && for i in $(seq 1 100); do ./sync_car > /dev/null || echo "falhou na rodada $i"; done[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake && for i in $(seq 1 100); do ./sync_car > /dev/null || echo "falhou na rodada $i"; done
+[?2004lmake: Nothing to be done for 'all'.
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make text[K[Kst
+[?2004l./sync_car
+car entering station with 4 free seats
+car departed station with 4 new passenger(s) (expected 4)
+car entering station with 27 free seats
+car departed station with 27 new passenger(s) (expected 27)
+car entering station with 17 free seats
+car departed station with 17 new passenger(s) (expected 17)
+car entering station with 42 free seats
+car departed station with 42 new passenger(s) (expected 42)
+car entering station with 44 free seats
+car departed station with 10 new passenger(s) (expected 10)
+Looks good!
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ exit
+[?2004lexit
+
+Script done on 2026-10-30 16:57:05-03:00 [COMMAND_EXIT_CODE="0"]
