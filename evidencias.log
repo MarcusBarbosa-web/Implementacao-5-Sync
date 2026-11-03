@@ -138,3 +138,322 @@ Looks good!
 [?2004lexit
 
 Script done on 2026-10-30 16:57:05-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-03 20:08:10-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="148" LINES="35"]
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ date
+[?2004lTue Nov  3 20:08:14 -03 2026
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ whoami
+[?2004lmarcus
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ pwd
+[?2004l/home/marcus/Implementacao-5-Sync
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ pwdwhoami[2Pdatels mvpb.tarcd[C[C[C[C[C[C[C[C[Cls[Kcd mvpb.tarls[C[C[C[C[C[C[C[C[C[7Pdatewhoami[3Ppwd[Kpwdwhoami[2Pdatels mvpb.tarcd[C[C[C[C[C[C[C[C[Cls[Ktar -tf mvpb.tarcvf mvpb.tar mvpb[6Ptf mvpb.tarls[Kcd mvpb.tarls[C[C[C[C[C[C[C[C[C[7Pdatewhoami[3Ppwd[Kmake testes
+[?2004l./sync_car_testes
+=== CENARIOS DETERMINISTICOS (21) ===
+[C01] sem passageiros: load_car retorna na hora
+        PASSOU
+[C02] carro com 0 assentos e fila: retorna e ninguem embarca
+        PASSOU
+[C03] mais assentos que fila: leva todos, espera on_board, retardatario espera
+        PASSOU
+[C04] menos assentos que fila: leva exatamente count, o resto fica
+        PASSOU
+[C05] load_car so retorna depois dos on_board
+        PASSOU
+[C06] passageiro chega durante o embarque
+        (info) passageiro que chegou com o carro na estacao e assentos livres: embarcou
+        PASSOU
+[C07] INVALIDO: count negativo com fila
+        PASSOU
+[C08] INVALIDO: count negativo sem fila
+        PASSOU
+[C09] limite: INT_MAX assentos
+        PASSOU
+[C10] carga: 2000 passageiros
+        PASSOU
+[C11] sem busy-wait (consumo de CPU)
+        (info) CPU: 0.010s com passageiros bloqueados, 0.015s com o carro esperando
+        PASSOU
+[C12] 600 passageiros, carros aleatorios em sequencia
+        PASSOU
+[C13] INVALIDO: on_board chamado a mais (violacao de contrato)
+        PASSOU
+[C14] INVALIDO: count = INT_MIN
+        PASSOU
+[C15] INVALIDO: 1500 carros com count 0/negativo e fila de 20
+        PASSOU
+[C16] 50 carros de 1 assento, 50 passageiros: 1 por carro
+        PASSOU
+[C17] fluxo continuo de chegadas durante o embarque
+        (info) 150 de 150 passageiros que chegaram durante o embarque entraram nesse carro
+        PASSOU
+[C18] carga: 5000 passageiros
+        PASSOU
+[C19] INVALIDO: on_board extra x1000 nao adianta a partida
+        PASSOU
+[C20] sequencia exata 30,30,30,10 com 100 na fila
+        PASSOU
+[C21] 300 idas e voltas (carro vazio / 2 passageiros)
+        PASSOU
+--- cenarios: 21 de 21 passaram
+
+=== TESTES ALEATORIOS (30 sementes por modo) ===
+[A1] lote (chegadas em lotes, verificacao exata): 30 de 30 sementes passaram
+[A2] caos (chegadas simultaneas, invariantes): 30 de 30 sementes passaram
+--- aleatorios: 0 falha(s)
+
+RESULTADO FINAL: TODOS OS TESTES PASSARAM
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make testes
+[?2004l./sync_car_testes
+=== CENARIOS DETERMINISTICOS (21) ===
+[C01] sem passageiros: load_car retorna na hora
+        PASSOU
+[C02] carro com 0 assentos e fila: retorna e ninguem embarca
+        PASSOU
+[C03] mais assentos que fila: leva todos, espera on_board, retardatario espera
+        PASSOU
+[C04] menos assentos que fila: leva exatamente count, o resto fica
+        PASSOU
+[C05] load_car so retorna depois dos on_board
+        PASSOU
+[C06] passageiro chega durante o embarque
+        (info) passageiro que chegou com o carro na estacao e assentos livres: embarcou
+        PASSOU
+[C07] INVALIDO: count negativo com fila
+        PASSOU
+[C08] INVALIDO: count negativo sem fila
+        PASSOU
+[C09] limite: INT_MAX assentos
+        PASSOU
+[C10] carga: 2000 passageiros
+        PASSOU
+[C11] sem busy-wait (consumo de CPU)
+        (info) CPU: 0.008s com passageiros bloqueados, 0.011s com o carro esperando
+        PASSOU
+[C12] 600 passageiros, carros aleatorios em sequencia
+        PASSOU
+[C13] INVALIDO: on_board chamado a mais (violacao de contrato)
+        PASSOU
+[C14] INVALIDO: count = INT_MIN
+        PASSOU
+[C15] INVALIDO: 1500 carros com count 0/negativo e fila de 20
+        PASSOU
+[C16] 50 carros de 1 assento, 50 passageiros: 1 por carro
+        PASSOU
+[C17] fluxo continuo de chegadas durante o embarque
+        (info) 150 de 150 passageiros que chegaram durante o embarque entraram nesse carro
+        PASSOU
+[C18] carga: 5000 passageiros
+        PASSOU
+[C19] INVALIDO: on_board extra x1000 nao adianta a partida
+        PASSOU
+[C20] sequencia exata 30,30,30,10 com 100 na fila
+        PASSOU
+[C21] 300 idas e voltas (carro vazio / 2 passageiros)
+        PASSOU
+--- cenarios: 21 de 21 passaram
+
+=== TESTES ALEATORIOS (30 sementes por modo) ===
+[A1] lote (chegadas em lotes, verificacao exata): 30 de 30 sementes passaram
+[A2] caos (chegadas simultaneas, invariantes): 30 de 30 sementes passaram
+--- aleatorios: 0 falha(s)
+
+RESULTADO FINAL: TODOS OS TESTES PASSARAM
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car sync_car_testes testes_ruido sync_car_ruido.o
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make_e[Ktestes[K[K[K[K[K[K[K testte[K[Kes_ruido[1Pruido-ruido
+[?2004lgcc -Wall -pthread -include ruido.h -c sync_car.c -o sync_car_ruido.o
+gcc -Wall -pthread -o testes_ruido sync_car-testes.c sync_car_ruido.o
+./testes_ruido
+=== CENARIOS DETERMINISTICOS (21) ===
+[C01] sem passageiros: load_car retorna na hora
+        PASSOU
+[C02] carro com 0 assentos e fila: retorna e ninguem embarca
+        PASSOU
+[C03] mais assentos que fila: leva todos, espera on_board, retardatario espera
+        PASSOU
+[C04] menos assentos que fila: leva exatamente count, o resto fica
+        PASSOU
+[C05] load_car so retorna depois dos on_board
+        PASSOU
+[C06] passageiro chega durante o embarque
+        (info) passageiro que chegou com o carro na estacao e assentos livres: embarcou
+        PASSOU
+[C07] INVALIDO: count negativo com fila
+        PASSOU
+[C08] INVALIDO: count negativo sem fila
+        PASSOU
+[C09] limite: INT_MAX assentos
+        PASSOU
+[C10] carga: 2000 passageiros
+        PASSOU
+[C11] sem busy-wait (consumo de CPU)
+        (info) CPU: 0.010s com passageiros bloqueados, 0.009s com o carro esperando
+        PASSOU
+[C12] 600 passageiros, carros aleatorios em sequencia
+        PASSOU
+[C13] INVALIDO: on_board chamado a mais (violacao de contrato)
+        PASSOU
+[C14] INVALIDO: count = INT_MIN
+        PASSOU
+[C15] INVALIDO: 1500 carros com count 0/negativo e fila de 20
+        PASSOU
+[C16] 50 carros de 1 assento, 50 passageiros: 1 por carro
+        PASSOU
+[C17] fluxo continuo de chegadas durante o embarque
+        (info) 150 de 150 passageiros que chegaram durante o embarque entraram nesse carro
+        PASSOU
+[C18] carga: 5000 passageiros
+        PASSOU
+[C19] INVALIDO: on_board extra x1000 nao adianta a partida
+        PASSOU
+[C20] sequencia exata 30,30,30,10 com 100 na fila
+        PASSOU
+[C21] 300 idas e voltas (carro vazio / 2 passageiros)
+        PASSOU
+--- cenarios: 21 de 21 passaram
+
+=== TESTES ALEATORIOS (30 sementes por modo) ===
+[A1] lote (chegadas em lotes, verificacao exata): 30 de 30 sementes passaram
+[A2] caos (chegadas simultaneas, invariantes): 30 de 30 sementes passaram
+--- aleatorios: 0 falha(s)
+
+RESULTADO FINAL: TODOS OS TESTES PASSARAM
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clear
+[?2004lmake: *** No rule to make target 'clear'.  Stop.
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car sync_car_testes testes_ruido sync_car_ruido.o
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make text[K[Kst[K[K[K[K[K
+[?2004lgcc -Wall -pthread -o sync_car sync_car.c sync_car-runner.c
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make text[K[Kst
+[?2004l./sync_car
+car entering station with 17 free seats
+car departed station with 17 new passenger(s) (expected 17)
+car entering station with 45 free seats
+car departed station with 45 new passenger(s) (expected 45)
+car entering station with 2 free seats
+car departed station with 2 new passenger(s) (expected 2)
+car entering station with 15 free seats
+car departed station with 15 new passenger(s) (expected 15)
+car entering station with 25 free seats
+car departed station with 21 new passenger(s) (expected 21)
+Looks good!
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make testes
+[?2004lgcc -Wall -pthread -o sync_car_testes sync_car-testes.c sync_car.c
+./sync_car_testes
+=== CENARIOS DETERMINISTICOS (21) ===
+[C01] sem passageiros: load_car retorna na hora
+        PASSOU
+[C02] carro com 0 assentos e fila: retorna e ninguem embarca
+        PASSOU
+[C03] mais assentos que fila: leva todos, espera on_board, retardatario espera
+        PASSOU
+[C04] menos assentos que fila: leva exatamente count, o resto fica
+        PASSOU
+[C05] load_car so retorna depois dos on_board
+        PASSOU
+[C06] passageiro chega durante o embarque
+        (info) passageiro que chegou com o carro na estacao e assentos livres: embarcou
+        PASSOU
+[C07] INVALIDO: count negativo com fila
+        PASSOU
+[C08] INVALIDO: count negativo sem fila
+        PASSOU
+[C09] limite: INT_MAX assentos
+        PASSOU
+[C10] carga: 2000 passageiros
+        PASSOU
+[C11] sem busy-wait (consumo de CPU)
+        (info) CPU: 0.011s com passageiros bloqueados, 0.011s com o carro esperando
+        PASSOU
+[C12] 600 passageiros, carros aleatorios em sequencia
+        PASSOU
+[C13] INVALIDO: on_board chamado a mais (violacao de contrato)
+        PASSOU
+[C14] INVALIDO: count = INT_MIN
+        PASSOU
+[C15] INVALIDO: 1500 carros com count 0/negativo e fila de 20
+        PASSOU
+[C16] 50 carros de 1 assento, 50 passageiros: 1 por carro
+        PASSOU
+[C17] fluxo continuo de chegadas durante o embarque
+        (info) 150 de 150 passageiros que chegaram durante o embarque entraram nesse carro
+        PASSOU
+[C18] carga: 5000 passageiros
+        PASSOU
+[C19] INVALIDO: on_board extra x1000 nao adianta a partida
+        PASSOU
+[C20] sequencia exata 30,30,30,10 com 100 na fila
+        PASSOU
+[C21] 300 idas e voltas (carro vazio / 2 passageiros)
+        PASSOU
+--- cenarios: 21 de 21 passaram
+
+=== TESTES ALEATORIOS (30 sementes por modo) ===
+[A1] lote (chegadas em lotes, verificacao exata): 30 de 30 sementes passaram
+[A2] caos (chegadas simultaneas, invariantes): 30 de 30 sementes passaram
+--- aleatorios: 0 falha(s)
+
+RESULTADO FINAL: TODOS OS TESTES PASSARAM
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make testes-ruido
+[?2004lgcc -Wall -pthread -include ruido.h -c sync_car.c -o sync_car_ruido.o
+gcc -Wall -pthread -o testes_ruido sync_car-testes.c sync_car_ruido.o
+./testes_ruido
+=== CENARIOS DETERMINISTICOS (21) ===
+[C01] sem passageiros: load_car retorna na hora
+        PASSOU
+[C02] carro com 0 assentos e fila: retorna e ninguem embarca
+        PASSOU
+[C03] mais assentos que fila: leva todos, espera on_board, retardatario espera
+        PASSOU
+[C04] menos assentos que fila: leva exatamente count, o resto fica
+        PASSOU
+[C05] load_car so retorna depois dos on_board
+        PASSOU
+[C06] passageiro chega durante o embarque
+        (info) passageiro que chegou com o carro na estacao e assentos livres: embarcou
+        PASSOU
+[C07] INVALIDO: count negativo com fila
+        PASSOU
+[C08] INVALIDO: count negativo sem fila
+        PASSOU
+[C09] limite: INT_MAX assentos
+        PASSOU
+[C10] carga: 2000 passageiros
+        PASSOU
+[C11] sem busy-wait (consumo de CPU)
+        (info) CPU: 0.010s com passageiros bloqueados, 0.010s com o carro esperando
+        PASSOU
+[C12] 600 passageiros, carros aleatorios em sequencia
+        PASSOU
+[C13] INVALIDO: on_board chamado a mais (violacao de contrato)
+        PASSOU
+[C14] INVALIDO: count = INT_MIN
+        PASSOU
+[C15] INVALIDO: 1500 carros com count 0/negativo e fila de 20
+        PASSOU
+[C16] 50 carros de 1 assento, 50 passageiros: 1 por carro
+        PASSOU
+[C17] fluxo continuo de chegadas durante o embarque
+        (info) 150 de 150 passageiros que chegaram durante o embarque entraram nesse carro
+        PASSOU
+[C18] carga: 5000 passageiros
+        PASSOU
+[C19] INVALIDO: on_board extra x1000 nao adianta a partida
+        PASSOU
+[C20] sequencia exata 30,30,30,10 com 100 na fila
+        PASSOU
+[C21] 300 idas e voltas (carro vazio / 2 passageiros)
+        PASSOU
+--- cenarios: 21 de 21 passaram
+
+=== TESTES ALEATORIOS (30 sementes por modo) ===
+[A1] lote (chegadas em lotes, verificacao exata): 30 de 30 sementes passaram
+[A2] caos (chegadas simultaneas, invariantes): 30 de 30 sementes passaram
+--- aleatorios: 0 falha(s)
+
+RESULTADO FINAL: TODOS OS TESTES PASSARAM
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ make clean
+[?2004lrm -f sync_car sync_car_testes testes_ruido sync_car_ruido.o
+[?2004h]0;marcus@Antonio: ~/Implementacao-5-Sync[01;32mmarcus@Antonio[00m:[01;34m~/Implementacao-5-Sync[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-03 20:26:47-03:00 [COMMAND_EXIT_CODE="0"]
